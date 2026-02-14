@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz San Valentín ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="musica" loop>
+        <source src="musica.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="stars"></div>
+    
+    <div class="container">
+        <div class="envelope-wrapper" id="envelope">
+            <div class="envelope">
+                <div class="front">
+                    <div class="flap"></div>
+                    <div class="pocket"></div>
+                </div>
+                <div class="letter">
+                    <div class="letter-content">
+                        <h3>Anthonela ❤️</h3>
+                        <p>A veces me pongo a pensar en como empezaron las cosas entre nosotros y me encanta que, sin planearlo mucho te hayas convertido en mi persona favorita para hablar de todo y de nada.</p>
+                        <p>Me gusta platicar contigo te lo eh dicho y que cada momento se siente auntetico. No se que nombre tenga esto, pero me encanta la energia que tenemos. Gracias por ser esa sorpresa que me dio este año, dicen que las mejores cosas de la vida pasan sin planearlas, y creo que nosotros somos la prueba de eso. Me encanta este punto en el que estamos: donde no hay reglas, pero sí muchas ganas de seguir conociendonos; donde no hay etiquetas, pero sobran las sonrisas cada vez que llega un mensaje tuyo y si se que tal ves sea muy rapido en la forma que estoy yendo y una disculpa por eso, pero es que la verdad me gustas, me gustan tus ojitos que te lo eh dicho un monton de veces, tus labios, tu carita, tu forma de ser conmigo, y todo lo que tenga que ver contigo es perfecto, sin nada mas que decir, te quiero cielito.</p>
+                        <p>Gracias por hacer que mis dias sean felices.</p>
+                        <p class="signature">Con cariño... <br> <strong>[Lenin]</strong></p>
+                    </div>
+                </div>
+                <div class="heart" onclick="abrirCarta()"></div>
+            </div>
+        </div>
+        <h2 class="tap-text">Toca el corazón para abrir</h2>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            const envelope = document.getElementById('envelope');
+            const musica = document.getElementById('musica');
+            
+            envelope.classList.toggle('open');
+            
+            // Reproducir música al interactuar
+            if (envelope.classList.contains('open')) {
+                musica.play().catch(e => console.log("El navegador bloqueó el audio inicial"));
+            } else {
+                musica.pause();
+            }
+        }
+
+        // Crear corazones flotantes de fondo
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 400);
+    </script>
+</body>
+</html>
